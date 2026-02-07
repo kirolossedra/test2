@@ -5,10 +5,7 @@ echo "[*] Backing up sources.list"
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
 echo "[*] Switching Ubuntu repos to old-releases (EOL fix)"
-sudo sed -i \
-  's|http://archive.ubuntu.com/ubuntu|http://old-releases.ubuntu.com/ubuntu|g; \
-   s|http://security.ubuntu.com/ubuntu|http://old-releases.ubuntu.com/ubuntu|g' \
-  /etc/apt/sources.list
+sudo sed -i "s|archive.ubuntu.com|old-releases.ubuntu.com|g; s|security.ubuntu.com|old-releases.ubuntu.com|g" /etc/apt/sources.list
 
 echo "[*] Updating apt (ignore Valid-Until)"
 sudo apt-get update -o Acquire::Check-Valid-Until=false
